@@ -1,0 +1,93 @@
+﻿@using DeliveryCRM;
+@using DeliveryCRM.Entities;
+
+
+@model IEnumerable<DeliveryCRM.Entities.DriverEntity>
+
+@{
+    ViewData["Title"] = "Создать заказ";
+}
+<html style="height: 100% ">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="~/css/mappage.css">
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=f6b3f13a-a1d8-423e-8a9d-e68fe0f22840&lang=ru_RU" type="text/javascript"></script>
+    <script src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
+    <script src="~/lib/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/js/script.js"></script>
+    <link rel="icon" type="image/png" href="~/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/lib//animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/lib//css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="~/lib//animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="~/lib//select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/lib//daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="~/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+</head>
+
+
+
+<body>
+
+    <div id="map" style="width: 100vw; height: 100vw; position: absolute; top: 0;left:0; height:100%"></div>
+
+    <div class="sidenav">
+
+        <form action="~/User/CreateOrder" method="post">
+
+            <div class="wrap-input100 validate-input" data-validate="Enter adress">
+                <input class="input100" type="text" name="startPoint" id="suggest1">
+                <span class="focus-input100" data-placeholder="Откуда"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input" data-validate="Enter adress">
+                <input class="input100" type="text" name="finishPoint" id="suggest2" >
+                <span class="focus-input100" data-placeholder="Куда"></span>
+            </div>
+            <div class="wrap-input100 validate-input">
+                <label  class="input100" type="text"  id="price">Тут будет цена</label>
+                <span class="focus-input100" data-placeholder="Цена"></span>
+            </div>
+
+
+
+            <button class="btn btn-outline-dark" style="position:relative; left:25px;" type="submit">Создать заказ</button>
+
+        </form>
+
+        <button class="btn btn-outline-dark" style="position:relative; left:25px; top: 5px" onclick="window.location='https://localhost:5001/User/DeliveryHistory'">История заказов</button>
+
+        <div>
+            <button class="btn btn-outline-dark" style="position:relative; left:25px; top: 10px" type="submit" id="button2">Построить маршрут</button>
+        </div>
+
+        <div hidden>
+            <button type="submit" id="button">Проверить</button>
+        </div>
+
+
+
+        <p style="position:relative; left:25px; top: 15px"  id="notice">Адрес не найден</p>
+        <div id="footer">
+            <div id="messageHeader"></div>
+            <div id="message"></div>
+        </div>
+
+        <p></p>
+
+    </div>
+
+
+    <script src="~/lib/animsition/js/animsition.min.js"></script>
+    <script src="~/lib/bootstrap/js/popper.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/select2/select2.min.js"></script>
+    <script src="~/lib/daterangepicker/moment.min.js"></script>
+    <script src="~/lib/daterangepicker/daterangepicker.js"></script>
+    <script src="~/lib/countdowntime/countdowntime.js"></script>
+    <script src="~/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+﻿@using DeliveryCRM;
+@using DeliveryCRM.Entities;
+
+
+@model IEnumerable<DeliveryCRM.Entities.OrderEntity>
+
+@{
+    ViewData["Title"] = "User";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Заказы</h1>
+</div>
+
+
+
+<div class="container">
+    <table class="table">
+        <h>Заказы</h>
+        <thead>
+            <tr>
+                <th scope="col">#Заказа</th>
+                <th scope="col">ID пользователя</th>
+                <th scope="col">Время поступления</th>
+                <th scope="col">Адрес отправления</th>
+                <th scope="col">Конечный адрес</th>
+                <th scope="col">Цена</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (OrderEntity item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.UserEntityId</td>
+                    <td>@item.DateOrder</td>
+                    <td>@item.PointStart</td>
+                    <td>@item.PointFinish</td>
+                    <td>@item.Price</td>                            
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

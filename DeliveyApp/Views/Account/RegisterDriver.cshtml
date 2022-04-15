@@ -1,0 +1,121 @@
+@model DeliveyApp.ViewModels.RegisterDriverModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="~/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="~/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="~/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="~/lib//animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="~/lib//css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="~/lib//animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="~/lib//select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="~/lib//daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="~/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/css/main.css">
+
+</head>
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+            <div class="wrap-login100">
+                <form class="login100-form validate-form"  asp-anti-forgery="true" asp-action="RegisterDriver" asp-controller="Account"> 
+                    <span class="login100-form-title p-b-26">
+                        Registration
+                    </span>
+                    <span class="login100-form-title p-b-48">
+                        <i class="zmdi zmdi-car"></i>
+                    </span>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Incorrect Email">
+                        <input class="input100" type="text" name="email" asp-for="Email">
+                        <span class="focus-input100" data-placeholder="Email"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input"  data-validate="Fill out">
+                        <input class="input100" type="text" name="fio" asp-for="Fio">  
+                        <span class="focus-input100" data-placeholder="FIO"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Incorrect passport">
+                        <input class="input100" type="text" name="passport" maxlength="10" asp-for="Passport"> 
+                        <span class="focus-input100" data-placeholder="Number passport"></span>
+                    </div>
+
+                     <div class="wrap-input100 validate-input" data-validate="Incorrect Driver's license number">
+                        <input class="input100" type="text" name="numberdriverlicense" maxlength="10" asp-for="Numberdriverlicense">
+                        <span class="focus-input100" data-placeholder="Driver's license number"></span>
+                    </div>
+
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <span class="btn-show-pass">
+                            <i class="zmdi zmdi-eye"></i>
+                        </span>
+                        <input class="input100" type="password" id="pass11">
+                        <span class="focus-input100" data-placeholder="Password"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="Enter password">
+                        <span class="btn-show-pass">
+                            <i class="zmdi zmdi-eye"></i>
+                        </span>
+                        <input class="input100" type="password" id="confPass11">
+                        <span class="focus-input100" data-placeholder="Repeat Password"></span>
+                    </div>
+
+                    <div >
+                        <input type="hidden" id="encrptPass" asp-for="Password"/> <!--name="Password" --> 
+                        <input type="hidden" id="encrptConfPass" asp-for="ConfirmPassword"/> <!--name="ConfirmPassword" -->
+                        <input type="hidden" id="salt" asp-for="Salt" name="Salt"/>
+
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button type="submit" class="login100-form-btn">
+                                Registration
+                            </button>
+                        </div>
+                    </div>
+                    <div class="validation" asp-validation-summary="All" style="padding: 10px; font-size: 10pt; text-align: center;"></div>
+                </form>
+
+                <div class="text-center p-t-10">
+                    <span class="txt1">
+                        Do you have an account?
+                    </span>
+                    <a asp-action="Login" asp-controller="Account">
+                        Login
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="dropDownSelect1"></div>
+
+    <script src="~/lib/jquery/jquery-3.2.1.min.js"></script>
+    <script src="~/lib/animsition/js/animsition.min.js"></script>
+    <script src="~/lib/bootstrap/js/popper.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script src="~/lib/select2/select2.min.js"></script>
+    <script src="~/lib/daterangepicker/moment.min.js"></script>
+    <script src="~/lib/daterangepicker/daterangepicker.js"></script>
+    <script src="~/lib/countdowntime/countdowntime.js"></script>
+    <script src="~/js/main.js"></script>
+    <script src="~/js/encrypt.js"></script>
+
+</body>
+</html>

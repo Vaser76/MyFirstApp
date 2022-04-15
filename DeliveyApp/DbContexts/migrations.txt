@@ -1,0 +1,11 @@
+﻿dotnet ef migrations add InitialIdentityServerPersistedGrantDbMigration -c PersistedGrantDbContext -o Data/Migrations/IdentityServer/PersistedGrantDb
+dotnet ef migrations add InitialIdentityServerConfigurationDbMigration -c ConfigurationDbContext -o Data/Migrations/IdentityServer/ConfigurationDb
+
+EntityFrameworkCore\Add-Migration Initial -Context DataContext -OutputDir Data/ApplicationDb
+EntityFrameworkCore\Update-Database -Context DataContext
+
+EntityFrameworkCore\Add-Migration PersistedGrantDbMigration -Context PersistedGrantDbContext -OutputDir Data/PersistedGrantDb
+EntityFrameworkCore\Update-Database -Context PersistedGrantDbContext
+
+EntityFrameworkCore\Add-Migration ConfigurationDbMigration -Context ConfigurationDbContext -OutputDir Data/ConfigurationDb
+EntityFrameworkCore\Update-Database -Context ConfigurationDbContext

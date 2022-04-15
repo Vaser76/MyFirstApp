@@ -1,0 +1,50 @@
+﻿@using DeliveryCRM;
+@using DeliveryCRM.Entities;
+
+
+@model IEnumerable<DeliveryCRM.Entities.OrderEntity>
+
+@{
+    ViewData["Title"] = "Manager";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Активные заказы</h1>
+</div>
+
+
+
+<div class="container">
+    <table class="table">
+        <h>Активные заказы</h>
+        <thead>
+            <tr>
+                <th scope="col">#Заказа</th>
+                <th scope="col">ID пользователя</th>
+                <th scope="col">Время поступления</th>
+                <th scope="col">Адрес отправления</th>
+                <th scope="col">Конечный адрес</th>
+                <th scope="col">Цена</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (OrderEntity item in Model)
+            {
+                <tr>
+                    <td>@item.Id</td>
+                    <td>@item.UserEntityId</td>
+                    <td>@item.DateOrder</td>
+                    <td>@item.PointStart</td>
+                    <td>@item.PointFinish</td>
+                    <td>@item.Price</td>
+                    <td> <a href="~/Manager/AssignDriver?orderId=@item.Id">Назначить</a></td>
+                    
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <div>
+        <button type="button" class="btn btn-outline-dark" name="btn1" onclick="window.location='https://localhost:5001/Manager/AssignedOrders'">Назначенные заказы</button>
+    </div>
+</div>

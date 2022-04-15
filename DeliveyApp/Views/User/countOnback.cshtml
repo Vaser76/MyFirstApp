@@ -1,0 +1,59 @@
+﻿@using DeliveryCRM;
+@using DeliveryCRM.Entities;
+
+
+@model IEnumerable<DeliveryCRM.Entities.DriverEntity>
+
+@{
+    ViewData["Title"] = "Создать заказ";
+}
+<head>
+<meta charset="utf-8" />
+    <title></title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=f6b3f13a-a1d8-423e-8a9d-e68fe0f22840&lang=ru_RU" type="text/javascript"></script>
+    <script src="https://yandex.st/jquery/2.2.3/jquery.min.js" type="text/javascript"></script>
+    <script src="~/js/script.js">
+    </script>
+</head>
+
+<div class="text-center">
+    <h3 class="display-4">Создать заказ</h3>
+</div>
+
+<body>
+    <div id="map" style="width: 1280px; height: 720px"></div>
+    <div>
+        @*<input type="text" id="suggest1" placeholder="Введите адрес" size="40" />
+        <label>    </label>
+        <input type="text" id="suggest2" placeholder="Введите адрес" size="40" />*@
+        <button type="submit" id="button">Проверить</button>
+        <label>    </label>
+        <button type="submit" id="button2">Построить маршрут</button>
+    </div>
+    <p id="notice">Адрес не найден</p>
+    <div id="footer">
+        <div id="messageHeader"></div>
+        <div id="message"></div>
+    </div>
+
+    <form action="~/User/CreateOrder" method="post">
+        <div>
+            <h5><label>Адрес отправки</label></h5>
+            <input type="text" id="suggest1" placeholder="Введите адрес" size="40" name="startPoint" />
+            <label>    </label>
+            
+            <!--<input type="text" size="40" name="startPoint">-->
+        </div>
+
+        <div>
+            <h5><label>Адрес доставки</label></h5>
+            <input type="text" id="suggest2" placeholder="Введите адрес" size="40" name="finishPoint" />
+            @*<input type="text" size="40" name="finishPoint">*@
+            <input type="hidden" id="price" name="price"/>
+        </div>
+        <p></p>
+        <button class="btn btn-outline-dark" type="submit">Создать заказ</button>
+    </form>
+    <p></p>
+    <button class="btn btn-outline-dark" onclick="window.location='https://localhost:5001/User/DeliveryHistory'">История заказов</button>
+</body>
